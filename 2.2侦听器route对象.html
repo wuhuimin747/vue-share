@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/login">登录</router-link>
+    <router-link to="/register">注册</router-link>
+
+    <router-view></router-view>
+  </div>
+
+  <script>
+    var login = Vue.extend({
+      template: '<h1>登录组件</h1>'
+    });
+
+    var register = Vue.extend({
+      template: '<h1>注册组件</h1>'
+    });
+
+    var router = new VueRouter({
+      routes: [
+        { path: "/login", component: login },
+        { path: "/register", component: register }
+      ]
+    });
+
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      router: router,
+      watch: {
+        '$route': function (newVal, oldVal) {
+          if (newVal.path === '/login') {
+            console.log('这是登录组件');
+          } else {
+            console.log('这是注册组件');
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

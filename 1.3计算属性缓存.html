@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+      <p>origin: {{msg}}</p>
+      <p>computed1: {{reverseMsg}}</p>
+      <p>computed2: {{reverseMsg}}</p>
+      <p>method1: {{reverseMsgMethod()}}</p>
+      <p>method2: {{reverseMsgMethod()}}</p>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',  
+      data: {
+          msg : 'nihao',
+      }, 
+      computed : {
+        reverseMsg : function(){
+            // 执行函数即打印
+            console.log('computed');
+            return this.msg.split('').reverse().join('');
+        }
+      },
+      methods : {
+        reverseMsgMethod(){
+            // 执行函数即打印
+            console.log('methods');
+            return this.msg.split('').reverse().join('');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

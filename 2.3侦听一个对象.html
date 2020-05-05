@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+      <p>name: {{queryData.name}}</p>
+      <p>creator: {{queryData.creator}}</p>
+      <p>status: {{queryData.status}}</p>
+      <ul>
+        <li v-for="(item, index) in queryData.time" :key="index">{{item}}</li>
+      </ul>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        queryData: {
+            name: 'Jony J',
+            creator: '喵',
+            status: '优秀',
+            time: ['12:00', '13:45', '11:30'],
+        },
+      },
+      watch: {
+        // 深度监听
+        queryData: {
+          handler(newVal, oldVal) {
+            console.log('handler triggered', newVal === oldVal);
+          },
+          deep: true
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

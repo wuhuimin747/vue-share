@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+      <input type="text" v-model="firstName"> +
+      <input type="text" v-model="lastName"> =
+      <span>{{fullName}}</span>
+    </div>
+
+    <script>
+      // 创建 Vue 实例，得到 ViewModel
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          firstName: 'nine',
+          lastName: 'one',
+          fullName: 'nine one'
+        },
+        methods: {},
+        watch: {
+          'firstName': function (newVal, oldVal) { // 第一个参数是新数据，第二个参数是旧数据
+            this.fullName = newVal + ' ' + this.lastName;
+          },
+          'lastName': function (newVal, oldVal) {
+            this.fullName = this.firstName + ' ' + newVal;
+          }
+        }
+      });
+    </script>
+</body>
+
+</html>
